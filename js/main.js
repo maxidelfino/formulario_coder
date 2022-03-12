@@ -1,10 +1,11 @@
 let condition = prompt(`¿Que acción desea realizar?
+
     1: Ingresar nuevo usuario
     0: Salir
-    
     (Recuerde el núemro de usuario asignado, este le servirá en un futuro)`
 );
-let usuarios = [];
+
+const usuarios = [];
 let i = 0;
 while (condition != 0) {
     if (condition == 1) {
@@ -26,18 +27,29 @@ while (condition != 0) {
                 email = prompt("Ingrese un mail valido");
             }
         }
-        // let comparaNombre = usuarios[i].nombre;
-        // console.log (usuarios.indexOf(comparaNombre));
         i++
     }
 
     else if (condition == 2) {
-        let verUsuario = prompt(`Ingrese numero de usuario que desea ver`);
-        
+        if (usuarios.length < 1) {
+            confirm("No hay usuarios")
+            prompt(`¿Que acción desea realizar?
+
+                1: Ingresar nuevo usuario
+                0: Salir
+                (Recuerde el núemro de usuario asignado, este le servirá en un futuro)`
+            );
+            
+        }
+        let userPointer = prompt(`Ingrese numero de usuario que desea ver`);
+        while (userPointer > usuarios.length) {
+            userPointer = prompt(`Ingrese numero de usuario valido`);
+        }
+        console.log(usuarios[i]);
         alert(`
-        Nombre: ${usuarios[(verUsuario - 1)].nombre}
-        Email: ${usuarios[(verUsuario - 1)].email}
-        Consulta: ${usuarios[(verUsuario - 1)].consulta}`)
+        Nombre: ${usuarios[(userPointer - 1)].nombre}
+        Email: ${usuarios[(userPointer - 1)].email}
+        Consulta: ${usuarios[(userPointer - 1)].consulta}`);
     }
 
     else if (condition == 3) {
